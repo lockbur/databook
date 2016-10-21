@@ -5,10 +5,9 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page ${systemName}</title>
+        <title>前台项目首页</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
-        默认密码: ${systemConfig.getDefaultPassword()}
+        <h1>前台项目首页!</h1>
     </body>
 </html>

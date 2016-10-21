@@ -5,9 +5,9 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>运营管理项目首页</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>运营管理项目首页!</h1>
     </body>
 </html>

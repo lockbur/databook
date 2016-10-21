@@ -25,12 +25,6 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
             <version>${spring.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>commons-logging</groupId>
-                    <artifactId>commons-logging</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
 
         <dependency>
@@ -102,7 +96,24 @@
 
     <build>
         <plugins>
-
+            <plugin>
+                <groupId>org.mortbay.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>7.3.1.v20110307</version>
+                <configuration>
+                    <connectors>
+                        <connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
+                            <port>5050</port>
+                        </connector>
+                    </connectors>
+                    <webAppConfig>
+                        <contextPath>/manager</contextPath>
+                    </webAppConfig>
+                    <scanIntervalSeconds>5000</scanIntervalSeconds>
+                    <stopKey>fookey</stopKey>
+                    <stopPort>7976</stopPort>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 

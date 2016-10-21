@@ -1,13 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.lockbur.book.service.impl;
 
-import com.anhao.config.api.LoaderCofig;
-import com.anhao.config.system.SystemConfig;
+import com.lockbur.book.common.system.BaseConfig;
+import com.lockbur.book.common.system.SystemConfig;
 import com.lockbur.book.gateway.service.ConfigService;
+import com.lockbur.book.gateway.service.LoaderCofig;
 
 import java.io.File;
 import java.io.FileNotFoundException;

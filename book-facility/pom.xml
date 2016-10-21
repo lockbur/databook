@@ -28,6 +28,12 @@
         </dependency>
 
         <dependency>
+            <groupId>com.lockbur.book</groupId>
+            <artifactId>book-service</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
             <version>${spring.version}</version>
@@ -125,5 +131,35 @@
             </snapshots>
         </repository>
     </repositories>
+
+    <build>
+        <finalName>book-facility</finalName>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.mortbay.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>7.3.1.v20110307</version>
+                <configuration>
+                    <connectors>
+                        <connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
+                            <port>8086</port>
+                        </connector>
+                    </connectors>
+                    <webAppConfig>
+                        <contextPath>/facility</contextPath>
+                    </webAppConfig>
+                    <scanIntervalSeconds>5000</scanIntervalSeconds>
+                    <stopKey>fookey</stopKey>
+                    <stopPort>7976</stopPort>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
