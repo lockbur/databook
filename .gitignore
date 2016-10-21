@@ -1,0 +1,10 @@
+*.idea
+*.iml
+book-common/target/
+book-gateway/target/
+book-dao/target/
+book-domain/target/
+book-service/target/
+book-facility/target/
+book-web-manager/target/
+book-web/target/
