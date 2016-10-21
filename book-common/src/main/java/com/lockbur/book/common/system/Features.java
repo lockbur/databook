@@ -27,4 +27,10 @@ public class Features implements Serializable {
     @Getter
     private boolean dimPrivacy = true;  //默认值
 
+    @Override
+    public String toString() {
+        return "Features{" +
+                "dimPrivacy=" + dimPrivacy +
+                '}';
+    }
 }

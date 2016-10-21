@@ -4,7 +4,7 @@
 
     <appender name="myConsole" class="org.apache.log4j.ConsoleAppender">
         <layout class="org.apache.log4j.PatternLayout">
-            <param name="ConversionPattern" value="[%d{dd HH:mm:ss,SSS\} %-5p] [%t] %c{2\} - %m%n"/>
+            <param name="ConversionPattern" value="[%d{MM-dd HH:mm:ss\} %-5p][%t][%c %M %L] %m%n"/>
         </layout>
         <!--过滤器设置输出的级别-->
         <filter class="org.apache.log4j.varia.LevelRangeFilter">
@@ -19,7 +19,7 @@
         <param name="File" value="/export/Logs/book.lockbur.local/app_info.log"/>
         <param name="DatePattern" value="'.'yyyy-MM-dd'.log'"/>
         <layout class="org.apache.log4j.PatternLayout">
-            <param name="ConversionPattern" value="[%d{MMdd HH:mm:ss SSS\} %-5p] [%t] %c{3\} - %m%n"/>
+            <param name="ConversionPattern" value="[%d{MMdd HH:mm:ss SSS\} %-5p] [%t] (%F:%L) - %m%n"/>
         </layout>
         <filter class="org.apache.log4j.varia.LevelRangeFilter">
             <param name="levelMin" value="INFO"/>
@@ -32,7 +32,7 @@
         <param name="File" value="/export/Logs/book.lockbur.local/app_error.log"/>
         <param name="DatePattern" value="'.'yyyy-MM-dd'.log'"/>
         <layout class="org.apache.log4j.PatternLayout">
-            <param name="ConversionPattern" value="[%d{MMdd HH:mm:ss SSS\} %-5p] [%t] %c{3\} - %m%n"/>
+            <param name="ConversionPattern" value="[%d{MMdd HH:mm:ss SSS\} %-5p] [%t] (%F:%L) - %m%n"/>
         </layout>
         <filter class="org.apache.log4j.varia.LevelRangeFilter">
             <param name="levelMin" value="ERROR"/>
@@ -45,7 +45,7 @@
         <param name="File" value="/export/Logs/book.lockbur.local/system_info.log"/>
         <param name="DatePattern" value="'.'yyyy-MM-dd'.log'"/>
         <layout class="org.apache.log4j.PatternLayout">
-            <param name="ConversionPattern" value="[%d{MMdd HH:mm:ss SSS\} %-5p] [%t] %c{3\} - %m%n"/>
+            <param name="ConversionPattern" value="[%d{MMdd HH:mm:ss SSS\} %-5p] [%t] (%F:%L) - %m%n"/>
         </layout>
         <filter class="org.apache.log4j.varia.LevelRangeFilter">
             <param name="levelMin" value="INFO"/>
@@ -58,7 +58,7 @@
         <param name="File" value="/export/Logs/book.lockbur.local/system_error.log"/>
         <param name="DatePattern" value="'.'yyyy-MM-dd'.log'"/>
         <layout class="org.apache.log4j.PatternLayout">
-            <param name="ConversionPattern" value="[%d{MMdd HH:mm:ss SSS\} %-5p] [%t] %c{3\} - %m%n"/>
+            <param name="ConversionPattern" value="[%d{MMdd HH:mm:ss SSS\} %-5p] [%t] (%F:%L) - %m%n"/>
         </layout>
         <filter class="org.apache.log4j.varia.LevelRangeFilter">
             <param name="levelMin" value="ERROR"/>

@@ -3,40 +3,32 @@ package com.lockbur.book.service.impl;
 import com.lockbur.book.common.system.BaseConfig;
 import com.lockbur.book.common.system.SystemConfig;
 import com.lockbur.book.gateway.service.ConfigService;
-import com.lockbur.book.gateway.service.LoaderCofig;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
-import javax.annotation.PostConstruct;
-import javax.annotation.Resource;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
 /**
- *
  * @author Administrator
  */
+@Service
 public class ConfigServiceImpl implements ConfigService {
+    private static final Logger logger = LoggerFactory.getLogger(ConfigServiceImpl.class);
 
-    private static final String DEFAULT_CONFIG_DIR = "/var/AnHao/config/";
+    private static final String DEFAULT_CONFIG_DIR = "/var/lockbur/config/";
     private JAXBContext context;
     private Unmarshaller unmarshaller;
 
-    @Resource
-    LoaderCofig loaderCofig;
-
-    @PostConstruct
-    void init() {
-
-    }
-
     @Override
     public String get() {
-        loaderCofig.load();
         return "i  am dubbo demo  server11111111111111111";
     }
 
@@ -58,7 +50,7 @@ public class ConfigServiceImpl implements ConfigService {
             this.context = JAXBContext.newInstance(new Class[]{SystemConfig.class});
             this.unmarshaller = this.context.createUnmarshaller();
         } catch (Exception ex) {
-//            this.logger.error("Error init JAXB env", ex);
+            this.logger.error("Error init JAXB env", ex);
         }
 
         String className = clazz.getName();
@@ -88,12 +80,12 @@ public class ConfigServiceImpl implements ConfigService {
                     }
                 }
             } catch (IOException ex) {
-//                this.logger.error("Cannot get Reader for " + className, ex);
+                this.logger.error("Cannot get Reader for " + className, ex);
             } catch (JAXBException ex) {
-//                this.logger.error("Cannot unmarshall the " + className + ", check config content.", ex);
+                this.logger.error("Cannot unmarshall the " + className + ", check config content.", ex);
             }
         } catch (NoSuchFieldException | IllegalArgumentException | IllegalAccessException ex) {
-//            this.logger.error("Config class " + className + " may not have CONFIG_NAME as public static field.", ex);
+            this.logger.error("Config class " + className + " may not have CONFIG_NAME as public static field.", ex);
         }
         return result;
     }
