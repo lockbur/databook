@@ -24,6 +24,7 @@ import java.util.Set;
 public class SecurityUserDetailsService implements UserDetailsService {
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
+
     @Resource
     private AdminDao adminDao;
 
@@ -40,7 +41,6 @@ public class SecurityUserDetailsService implements UserDetailsService {
             admin.setLockedDate(null);
             //adminDao.update(admin);
         }
-        // admin.setAuthorities(getGrantedAuthorities(admin));
         boolean enabled = true;
         boolean accountNonExpired = true;
         boolean credentialsNonExpired = true;
@@ -50,7 +50,7 @@ public class SecurityUserDetailsService implements UserDetailsService {
 
         UserDetails userDetails = new User(
                 admin.getUsername(),
-                admin.getPassword().toLowerCase(),
+                admin.getPassword(),
                 admin.getAccountEnabled(), accountNonExpired, credentialsNonExpired, accountNonLocked,
                 authorities);
 

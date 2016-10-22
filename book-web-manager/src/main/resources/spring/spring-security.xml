@@ -13,14 +13,6 @@
         <intercept-url pattern="/admin**" access="ROLE_USER"/>
     </http>
 
-    <!--<authentication-manager>-->
-    <!--<authentication-provider>-->
-    <!--<user-service>-->
-    <!--<user name="admin" password="123456" authorities="ROLE_USER"/>-->
-    <!--</user-service>-->
-    <!--</authentication-provider>-->
-    <!--</authentication-manager>-->
-
     <authentication-manager alias="authenticationManager">
         <authentication-provider user-service-ref="securityUserDetailsService">
             <password-encoder hash="md5"/>
