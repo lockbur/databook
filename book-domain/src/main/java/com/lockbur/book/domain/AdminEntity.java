@@ -14,16 +14,16 @@ public class AdminEntity implements Serializable {
 
 
     private long id;
-    private String username;// 用户名
 
+    private String username;// 用户名
     private String password;// 密码
     private String email;// E-mail
     private String name;// 姓名
     private String department;// 部门
-    private Boolean isAccountEnabled;// 账号是否启用
-    private Boolean isAccountLocked;// 账号是否锁定
-    private Boolean isAccountExpired;// 账号是否过期
-    private Boolean isCredentialsExpired;// 凭证是否过期
+    private Boolean accountEnabled;// 账号是否启用
+    private Boolean accountLocked;// 账号是否锁定
+    private Boolean accountExpired;// 账号是否过期
+    private Boolean credentialsExpired;// 凭证是否过期
     private Integer loginFailureCount;// 连续登录失败的次数
     private Date lockedDate;// 账号锁定日期
     private Date loginDate;// 最后登录日期
@@ -80,35 +80,35 @@ public class AdminEntity implements Serializable {
     }
 
     public Boolean getAccountEnabled() {
-        return isAccountEnabled;
+        return accountEnabled;
     }
 
     public void setAccountEnabled(Boolean accountEnabled) {
-        isAccountEnabled = accountEnabled;
+        this.accountEnabled = accountEnabled;
     }
 
     public Boolean getAccountLocked() {
-        return isAccountLocked;
+        return accountLocked;
     }
 
     public void setAccountLocked(Boolean accountLocked) {
-        isAccountLocked = accountLocked;
+        this.accountLocked = accountLocked;
     }
 
     public Boolean getAccountExpired() {
-        return isAccountExpired;
+        return accountExpired;
     }
 
     public void setAccountExpired(Boolean accountExpired) {
-        isAccountExpired = accountExpired;
+        this.accountExpired = accountExpired;
     }
 
     public Boolean getCredentialsExpired() {
-        return isCredentialsExpired;
+        return credentialsExpired;
     }
 
     public void setCredentialsExpired(Boolean credentialsExpired) {
-        isCredentialsExpired = credentialsExpired;
+        this.credentialsExpired = credentialsExpired;
     }
 
     public Integer getLoginFailureCount() {

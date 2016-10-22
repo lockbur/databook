@@ -8,6 +8,13 @@ import com.lockbur.book.domain.AdminEntity;
 public interface AdminDao {
 
     /**
+     * 保存到数据库
+     *
+     * @param entity
+     */
+    public void insert(AdminEntity entity);
+
+    /**
      * 根据用户名判断此用户是否存在（不区分大小写）
      */
     public boolean isExistByUsername(String username);

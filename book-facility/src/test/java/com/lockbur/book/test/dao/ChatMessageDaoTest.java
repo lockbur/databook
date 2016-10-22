@@ -20,7 +20,7 @@ public class ChatMessageDaoTest extends TestBase {
     @Resource
     private ChatMessageDao chatMessageDao;
 
-    @Test
+    //@Test
     public void insert() {
 
         ChatMessageEntity message=new ChatMessageEntity();
