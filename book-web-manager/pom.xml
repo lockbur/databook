@@ -16,10 +16,25 @@
     <name>book-web-manager</name>
 
     <properties>
+        <dubbo.version>2.5.3</dubbo.version>
+        <zookeeper.version>3.4.5</zookeeper.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <dependencies>
+
+        <dependency>
+            <groupId>com.lockbur.book</groupId>
+            <artifactId>book-gateway</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <!--如果是dubbo服务，不需要依赖service,这里是为了测试方便-->
+        <dependency>
+            <groupId>com.lockbur.book</groupId>
+            <artifactId>book-service</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
         <!-- Spring dependencies -->
         <dependency>
             <groupId>org.springframework</groupId>
@@ -75,6 +90,44 @@
         </dependency>
 
         <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>dubbo</artifactId>
+            <version>${dubbo.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>com.101tec</groupId>
+            <artifactId>zkclient</artifactId>
+            <version>0.4</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.zookeeper</groupId>
+            <artifactId>zookeeper</artifactId>
+            <version>${zookeeper.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>jmxtools</artifactId>
+                    <groupId>com.sun.jdmk</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>jmxri</artifactId>
+                    <groupId>com.sun.jmx</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>jms</artifactId>
+                    <groupId>javax.jms</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>${junit.version}</version>
@@ -111,7 +164,7 @@
                     </webAppConfig>
                     <scanIntervalSeconds>5000</scanIntervalSeconds>
                     <stopKey>fookey</stopKey>
-                    <stopPort>7976</stopPort>
+                    <stopPort>7950</stopPort>
                 </configuration>
             </plugin>
         </plugins>

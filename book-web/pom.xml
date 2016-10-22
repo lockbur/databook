@@ -41,6 +41,19 @@
     <dependencies>
 
         <dependency>
+            <groupId>com.lockbur.book</groupId>
+            <artifactId>book-gateway</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <!--如果是dubbo服务，不需要依赖service,这里是为了测试方便-->
+        <dependency>
+            <groupId>com.lockbur.book</groupId>
+            <artifactId>book-service</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+
+        <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
             <version>${spring.version}</version>
@@ -155,7 +168,7 @@
                     </webAppConfig>
                     <scanIntervalSeconds>5000</scanIntervalSeconds>
                     <stopKey>fookey</stopKey>
-                    <stopPort>7976</stopPort>
+                    <stopPort>7980</stopPort>
                 </configuration>
             </plugin>
         </plugins>

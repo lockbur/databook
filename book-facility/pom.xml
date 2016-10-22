@@ -16,6 +16,8 @@
 
     <properties>
         <jackson.version>1.9.12</jackson.version>
+        <dubbo.version>2.5.3</dubbo.version>
+        <zookeeper.version>3.4.5</zookeeper.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -96,6 +98,44 @@
         </dependency>
 
         <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>dubbo</artifactId>
+            <version>${dubbo.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>com.101tec</groupId>
+            <artifactId>zkclient</artifactId>
+            <version>0.4</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.zookeeper</groupId>
+            <artifactId>zookeeper</artifactId>
+            <version>${zookeeper.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>jmxtools</artifactId>
+                    <groupId>com.sun.jdmk</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>jmxri</artifactId>
+                    <groupId>com.sun.jmx</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>jms</artifactId>
+                    <groupId>javax.jms</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>${junit.version}</version>
@@ -115,7 +155,6 @@
             <version>7.0</version>
             <scope>provided</scope>
         </dependency>
-
     </dependencies>
     <repositories>
         <repository>
@@ -156,7 +195,7 @@
                     </webAppConfig>
                     <scanIntervalSeconds>5000</scanIntervalSeconds>
                     <stopKey>fookey</stopKey>
-                    <stopPort>7976</stopPort>
+                    <stopPort>7986</stopPort>
                 </configuration>
             </plugin>
         </plugins>
