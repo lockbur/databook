@@ -2,11 +2,16 @@
 ###### 主要使用maven 和spring spring mvc dubbo mybatis技术实现分模块开发，注册中心使用zookeeper-3.4.6 这个版本.
 > 构建顺序
 * 1 构建Parent
-* 2 构建Gateway ,该工程中主要提供接口
-* 3 构建Underground
-* 4 构建facilities 这个主要聚合作用,把所有的模块实现放到一个工程中，方便部署
-* 5 构建market 调用service的实现
-
+* 2 构建book-common , 该模块中提供一些通用的工具
+* 3 构建book-gateway , 该模块中主要提供接口
+* 3 构建book-domain, 该模块是对应数据表相关
+* 3 构建book-dao, 该模块是数据层
+* 3 构建book-service, 该模块是业务实现层，主要接口在gateway中提供
+* 4 构建book-facility, 该模块主要聚合作用,把所有的模块实现放到一个工程中，方便部署，提供dubbo服务
+* 5 构建book-web-manager, 运营后台管理，该模块调用service的实现
+* 5 构建book-web, 前台，该模块调用service的实现
+>运行说明
+* book-facility,book-web-manager,book-web都是web程序，默认是以jetty插件运行(mvn jetty:run)，正式环境使用jdk7,tomcat7
 >项目运行
 * 1 先启动zookeeper 
 	如果是windows: 执行D:\Tools\zookeeper-3.4.6\bin  下的zkServer 即可
