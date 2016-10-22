@@ -21,7 +21,7 @@ import javax.xml.bind.Unmarshaller;
  */
 @Service
 public class ConfigServiceImpl implements ConfigService {
-    private static final Logger logger = LoggerFactory.getLogger(ConfigServiceImpl.class);
+    private final Logger logger = LoggerFactory.getLogger(getClass());
 
     private static final String DEFAULT_CONFIG_DIR = "/var/lockbur/config/";
     private JAXBContext context;
