@@ -10,8 +10,10 @@
 * 4 构建book-facility, 该模块主要聚合作用,把所有的模块实现放到一个工程中，方便部署，提供dubbo服务
 * 5 构建book-web-manager, 运营后台管理，该模块调用service的实现
 * 5 构建book-web, 前台，该模块调用service的实现
+
 >运行说明
 * book-facility,book-web-manager,book-web都是web程序，默认是以jetty插件运行(mvn jetty:run)，正式环境使用jdk7,tomcat7
+
 >项目运行
 * 1 先启动zookeeper 
 	如果是windows: 执行D:\Tools\zookeeper-3.4.6\bin  下的zkServer 即可
@@ -20,6 +22,7 @@
 * 3 打包运行facilities项目 
 * 4 运行Market ，输入http://localhost:8080/Market/admin/create.do  插入一条数据到v_amdin表
 * 5 输入http://localhost:8080/Market/admin/list.do 观察控制输出如下信息,则成功
+
 >
 ######
 ```
