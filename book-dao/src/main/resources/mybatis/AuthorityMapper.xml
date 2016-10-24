@@ -30,7 +30,10 @@
     <select id="findAuthorityByRole" resultType="String">
         SELECT authority FROM tb_authority
         WHERE
-        role_id=#{roleId}
+        role_id in
+        <foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+            #{item}
+        </foreach>
     </select>
 
 </mapper>

@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * Created by Administrator on 2016/10/24.
@@ -27,5 +28,11 @@ public class RoleDaoTest extends TestBase {
         role.setDescription("描述");
         role.setCreatorId(1);
         roleDao.insert(role);
+    }
+
+    //@Test
+    public void findRolesByAdmin() {
+        List<RoleEntity> list = roleDao.findRolesByAdmin(1);
+        LOGGER.info("### {}", list.size());
     }
 }

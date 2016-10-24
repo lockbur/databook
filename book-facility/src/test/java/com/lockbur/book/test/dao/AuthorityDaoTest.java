@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -29,9 +30,15 @@ public class AuthorityDaoTest extends TestBase {
         authorityDao.insert(authority);
     }
 
-    //@Test
+   // @Test
     public void findAuthorityByRole() {
-        List<String> list = authorityDao.findAuthorityByRole(1);
+
+        List ins=new ArrayList<>();
+
+        ins.add(1);
+        //ins.add(2);
+
+        List<String> list = authorityDao.findAuthorityByRole(ins);
 
         LOGGER.info("size {}", list.size());
     }

@@ -3,6 +3,8 @@ package com.lockbur.book.gateway.service;
 
 import com.lockbur.book.gateway.model.Admin;
 
+import java.util.List;
+
 /**
  * Service接口 - 管理员
  *
@@ -19,5 +21,13 @@ public interface AdminService {
      * 根据用户名获取管理员对象，若管理员不存在，则返回null（不区分大小写）
      */
     public Admin getAdminByUsername(String username);
+
+    /**
+     * 根据ID查找权限
+     *
+     * @param id ID
+     * @return 权限, 若不存在则返回null
+     */
+    public List<String> findAuthorities(Long id);
 
 }

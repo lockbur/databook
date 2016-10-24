@@ -1,5 +1,7 @@
 package com.lockbur.book.gateway.service;
 
+import com.lockbur.book.gateway.model.Role;
+
 import java.util.List;
 
 /**
@@ -7,5 +9,22 @@ import java.util.List;
  */
 public interface RoleService {
 
-    public List<String> findAuthority(long id);
+    public List<String> findAuthority(List<Long> roleIds);
+
+    /**
+     * 查询用户的角色
+     *
+     * @param id
+     * @return
+     */
+    public List<Role> findRolesByAdmin(long id);
+
+
+    /**
+     * 查询用户对应的角色ID
+     *
+     * @param id
+     * @return
+     */
+    public List<Long> findRoleIdsByAdmin(long id);
 }

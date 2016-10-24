@@ -21,7 +21,7 @@ public class RoleServiceTest extends TestBase {
 
     //@Test
     public void get() {
-        List<String> list = roleService.findAuthority(1);
-        logger.info("roleService {}", list.size());
+       // List<String> list = roleService.findAuthority(1);
+        //logger.info("roleService {}", list.size());
     }
 }

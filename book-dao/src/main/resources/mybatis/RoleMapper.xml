@@ -26,4 +26,13 @@
         )
     </insert>
 
+    <!-- 通过用户ID查询对应角色 -->
+    <select id="findRolesByAdmin" resultMap="roleEntity">
+        SELECT
+         tr.*
+        FROM tb_role tr
+        INNER JOIN tb_admin_role tar ON tr.id = tar.role_id
+        WHERE tar.admin_id = #{adminId}
+    </select>
+
 </mapper>

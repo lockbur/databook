@@ -2,8 +2,6 @@ package com.lockbur.book.manager.service;
 
 import com.lockbur.book.gateway.model.Admin;
 import com.lockbur.book.gateway.service.AdminService;
-import com.lockbur.book.gateway.service.RoleService;
-
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -11,13 +9,16 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+
 import javax.annotation.Resource;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 /**
  * Created by Administrator on 2016/10/22.
  */
@@ -29,8 +30,6 @@ public class SecurityUserDetailsService implements UserDetailsService {
     @Resource
     private AdminService adminService;
 
-    @Resource
-    private RoleService roleService;
 
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Admin admin = adminService.getAdminByUsername(username);
@@ -65,10 +64,10 @@ public class SecurityUserDetailsService implements UserDetailsService {
     public Collection<GrantedAuthority> getGrantedAuthorities(Long id) {
         Set<GrantedAuthority> grantedAuthorities = new HashSet<GrantedAuthority>();
         //查询用户权限
-        List<String> list = roleService.findAuthority(id);
+        List<String> list = adminService.findAuthorities(id);
         logger.info(id + "用户的权限列表：");
         for (String authority : list) {
-            logger.info(id + "的权限列表：{}",authority);
+            logger.info(id + "的权限列表：{}", authority);
             grantedAuthorities.add(new SimpleGrantedAuthority(authority));
         }
 //        grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_TEST"));

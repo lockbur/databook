@@ -11,5 +11,5 @@ public interface AuthorityDao {
 
     public void insert(AuthorityEntity entity);
 
-    public List<String> findAuthorityByRole(long roleId);
+    public List<String> findAuthorityByRole(List<Long> roleIds);
 }
