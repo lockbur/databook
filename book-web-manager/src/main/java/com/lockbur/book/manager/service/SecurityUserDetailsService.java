@@ -44,7 +44,7 @@ public class SecurityUserDetailsService implements UserDetailsService {
         boolean enabled = true;
         boolean accountNonExpired = true;
         boolean credentialsNonExpired = true;
-        boolean accountNonLocked = true;
+        boolean accountNonLocked = false;
 
         Collection<GrantedAuthority> authorities = getGrantedAuthorities(admin.getId());
 
