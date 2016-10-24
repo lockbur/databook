@@ -8,6 +8,7 @@ import com.lockbur.book.gateway.model.Admin;
 import com.lockbur.book.gateway.service.AdminService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 
@@ -34,6 +35,8 @@ public class AdminServiceImpl implements AdminService {
         AdminEntity entity = adminDao.getAdminByUsername(username);
 
         Admin admin = new Admin();
+        BeanUtils.copyProperties(entity, admin);
+
         return admin;
     }
 

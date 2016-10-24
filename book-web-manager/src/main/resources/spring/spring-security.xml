@@ -13,20 +13,20 @@
 
         <intercept-url pattern="/admin**" access="ROLE_USER"/>
 
-        <!--<form-login-->
-                    <!--login-page="/login"-->
-                    <!--default-target-url="/welcome"-->
-                    <!--authentication-failure-url="/login?error=1"-->
-                    <!--username-parameter="username"-->
-                    <!--password-parameter="password"/>-->
+        <form-login
+                    login-page="/login"
+                    default-target-url="/welcome"
+                    authentication-failure-url="/login?error=1"
+                    username-parameter="username"
+                    password-parameter="password"/>
 
-        <form-login authentication-failure-handler-ref="loginFailureHandler"
-                login-page="/login"
-                default-target-url="/welcome"
-                username-parameter="username"
-                password-parameter="password"/>
+        <!--<form-login authentication-failure-handler-ref="loginFailureHandler"-->
+                <!--login-page="/login"-->
+                <!--default-target-url="/welcome"-->
+                <!--username-parameter="username"-->
+                <!--password-parameter="password"/>-->
 
-        <logout logout-success-url="/logout"/>
+        <!--<logout logout-success-url="/logout"/>-->
         <!-- enable csrf protection -->
         <csrf/>
     </http>
@@ -39,9 +39,9 @@
     </authentication-manager>
 
     <!-- 登陆失败处理器 -->
-    <beans:bean id="loginFailureHandler" class="com.lockbur.book.manager.security.LoginFailureHandler">
-        <!-- 可以配置相应的跳转方式。属性forwardToDestination为true采用forward false(默认)为sendRedirect -->
-        <beans:property name="forwardToDestination" value="false"></beans:property>
-    </beans:bean>
+    <!--<beans:bean id="loginFailureHandler" class="com.lockbur.book.manager.security.LoginFailureHandler">-->
+        <!--&lt;!&ndash; 可以配置相应的跳转方式。属性forwardToDestination为true采用forward false(默认)为sendRedirect &ndash;&gt;-->
+        <!--<beans:property name="forwardToDestination" value="false"></beans:property>-->
+    <!--</beans:bean>-->
 
 </beans:beans>

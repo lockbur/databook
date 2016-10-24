@@ -19,7 +19,7 @@ public class RoleDaoTest extends TestBase {
     @Resource
     private RoleDao roleDao;
 
-    @Test
+    //@Test
     public void insert() {
         RoleEntity role = new RoleEntity();
         role.setName("超级管理员");

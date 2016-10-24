@@ -4,7 +4,7 @@
 <mapper namespace="com.lockbur.book.dao.RoleDao">
 
 
-    <resultMap id="adminEntity" type="com.lockbur.book.domain.RoleEntity">
+    <resultMap id="roleEntity" type="com.lockbur.book.domain.RoleEntity">
         <id property="id" column="id"></id>
 
         <result property="value" column="value"></result>
@@ -25,16 +25,5 @@
          #{name}, #{value},#{description},#{creatorId},now(),now()
         )
     </insert>
-
-    <select id="getAdminByUsername" resultMap="adminEntity">
-        SELECT
-        id,username,password,email,name,department,account_enabled,account_locked,account_expired,login_failure_count,locked_date,login_date,login_ip,created_time,modified_time
-        FROM
-        tb_admin
-        WHERE
-        username=#{username}
-        LIMIT 1
-    </select>
-
 
 </mapper>

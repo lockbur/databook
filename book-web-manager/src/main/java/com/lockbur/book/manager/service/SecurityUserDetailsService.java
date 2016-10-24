@@ -1,9 +1,9 @@
 package com.lockbur.book.manager.service;
 
-import com.lockbur.book.dao.AdminDao;
-import com.lockbur.book.domain.AdminEntity;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.lockbur.book.gateway.model.Admin;
+import com.lockbur.book.gateway.service.AdminService;
+import com.lockbur.book.gateway.service.RoleService;
+
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -11,12 +11,13 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-
 import javax.annotation.Resource;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 /**
  * Created by Administrator on 2016/10/22.
  */
@@ -26,10 +27,13 @@ public class SecurityUserDetailsService implements UserDetailsService {
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
     @Resource
-    private AdminDao adminDao;
+    private AdminService adminService;
+
+    @Resource
+    private RoleService roleService;
 
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        AdminEntity admin = adminDao.getAdminByUsername(username);
+        Admin admin = adminService.getAdminByUsername(username);
         if (admin == null) {
             logger.info("管理员[" + username + "]不存在!\"\"");
             throw new UsernameNotFoundException("管理员[" + username + "]不存在!");
@@ -44,7 +48,7 @@ public class SecurityUserDetailsService implements UserDetailsService {
         boolean enabled = true;
         boolean accountNonExpired = true;
         boolean credentialsNonExpired = true;
-        boolean accountNonLocked = false;
+        boolean accountNonLocked = true;
 
         Collection<GrantedAuthority> authorities = getGrantedAuthorities(admin.getId());
 
@@ -57,23 +61,17 @@ public class SecurityUserDetailsService implements UserDetailsService {
         return userDetails;
     }
 
-
     // 获得管理角色数组
     public Collection<GrantedAuthority> getGrantedAuthorities(Long id) {
         Set<GrantedAuthority> grantedAuthorities = new HashSet<GrantedAuthority>();
-
         //查询用户权限
-        //TODO..
-        //logger.info(admin.getName() + "用户的权限列表：");
+        List<String> list = roleService.findAuthority(id);
         logger.info(id + "用户的权限列表：");
-//        for (Role role : admin.getRoleSet()) {
-//            //grantedAuthorities.add(new GrantedAuthorityImpl(role.getValue()));
-//            for (Module module : role.getModuleSet()) {
-//                System.out.print(module.getValue() + ",");
-//                grantedAuthorities.add(new GrantedAuthorityImpl(module.getValue()));
-//            }
-//        }
-        grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_USER"));
+        for (String authority : list) {
+            logger.info(id + "的权限列表：{}",authority);
+            grantedAuthorities.add(new SimpleGrantedAuthority(authority));
+        }
+//        grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_TEST"));
         return grantedAuthorities;
         //return grantedAuthorities.toArray(new GrantedAuthority[grantedAuthorities.size()]);
     }

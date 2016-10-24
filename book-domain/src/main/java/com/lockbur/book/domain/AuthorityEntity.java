@@ -11,6 +11,7 @@ public class AuthorityEntity implements Serializable {
     private long id;
     private long roleId;//角色关联
     private String authority;//角色权限 如 ROLE_ADMIN
+    private long creatorId;//创建人
     private Date createdTime;
     private Date modifiedTime;
 
@@ -52,5 +53,13 @@ public class AuthorityEntity implements Serializable {
 
     public void setModifiedTime(Date modifiedTime) {
         this.modifiedTime = modifiedTime;
+    }
+
+    public long getCreatorId() {
+        return creatorId;
+    }
+
+    public void setCreatorId(long creatorId) {
+        this.creatorId = creatorId;
     }
 }
