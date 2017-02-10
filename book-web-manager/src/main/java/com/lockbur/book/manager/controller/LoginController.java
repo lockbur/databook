@@ -38,15 +38,15 @@ public class LoginController {
     private String getErrorMessage(HttpServletRequest request, String key) {
         Exception exception = (Exception) request.getSession().getAttribute(key);
         String error = "";
-        logger.info("getErrorMessage {}", exception);
+        //logger.info("getErrorMessage {}", exception);
         if (exception instanceof BadCredentialsException) {
-            error = "Invalid username and password!";
+            error = "用户名或者密码不正确!";
         } else if (exception instanceof LockedException) {
-            error = exception.getMessage();
+            error = "账户已被锁定!";
         } else if (exception instanceof CredentialsExpiredException) {
-            error = exception.getMessage();
+            error = "登录凭证已过期!";
         } else {
-            error = "Invalid username and password!";
+            error = "用户名或者密码不正确!";
         }
         return error;
     }

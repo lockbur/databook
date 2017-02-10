@@ -9,6 +9,24 @@
     <!-- 自动扫描controller包下的所有类，使其认为spring mvc的控制器 -->
     <context:component-scan base-package="com.lockbur.book.service"/>
 
+    <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+        <property name="host" value="smtp.mxhichina.com"/>
+        <property name="port" value="25"/>
+        <property name="username" value="wang.kun@zhongfl.com"/>
+        <property name="password" value="WANGKUN#44"/>
+
+        <property name="javaMailProperties">
+            <props>
+                <prop key="mail.smtp.auth">true</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="velocityEngine" class="org.springframework.ui.velocity.VelocityEngineFactoryBean">
+        <property name="resourceLoaderPath" value="classpath:templates"/>
+        <property name="configLocation" value="classpath:velocity.properties"/>
+    </bean>
+
     <import resource="spring/spring-mybatis.xml"></import>
 
     <!--<import resource="spring/spring-dubbo.xml"></import>-->

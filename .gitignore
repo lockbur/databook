@@ -8,3 +8,4 @@ book-service/target/
 book-facility/target/
 book-web-manager/target/
 book-web/target/
+book-web-manager/src/main/webapp/assets/**
