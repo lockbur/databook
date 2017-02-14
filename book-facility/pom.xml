@@ -18,7 +18,10 @@
         <jackson.version>1.9.12</jackson.version>
         <dubbo.version>2.5.3</dubbo.version>
         <zookeeper.version>3.4.5</zookeeper.version>
+
+        <timestamp>${maven.build.timestamp}</timestamp>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.build.timestamp.format>yyyy-MM-dd HH:mm:ss</maven.build.timestamp.format>
     </properties>
 
     <dependencies>
@@ -173,12 +176,14 @@
 
     <build>
         <finalName>book-facility</finalName>
+
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
                 <filtering>true</filtering>
             </resource>
         </resources>
+
         <plugins>
             <plugin>
                 <groupId>org.mortbay.jetty</groupId>
